@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D-day ✈ 5월 15일</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fdf8f2;
+      --surface: #ffffff;
+      --border: rgba(180,140,100,0.15);
+      --border2: rgba(180,140,100,0.25);
+      --text: #2c2016;
+      --muted: #a08060;
+      --accent: #e8925a;
+      --accent2: #f0b882;
+      --accent3: #f7dfc0;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(255,220,170,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 100%, rgba(255,190,140,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 60% 50%, rgba(255,240,220,0.3) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .petal {
+      position: fixed;
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 400;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.7s 0.08s ease both;
+    }
+
+    .heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .date-sub {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 2.8rem;
+      animation: fadeUp 0.7s 0.15s ease both;
+    }
+
+    .dday-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border2);
+      border-radius: 24px;
+      padding: 2rem 3rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.6rem;
+      box-shadow: 0 2px 40px rgba(200,140,80,0.08);
+      animation: fadeUp 0.7s 0.22s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dday-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
+    }
+
+    .dday-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .dday-label {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .dday-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5.5rem, 20vw, 9rem);
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+
+    .dday-unit {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .dday-hint {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .blocks {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .block {
+      background: var(--surface);
+      border: 0.5px solid var(--border2);
+      border-radius: 16px;
+      padding: 1rem 1.3rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 1px 12px rgba(200,140,80,0.05);
+      min-width: 80px;
+    }
+
+    .block-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      line-height: 1;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    .block-label {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-top: 5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .colon {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent3);
+      margin-bottom: 12px;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+
+    .progress-wrap {
+      width: 100%;
+      max-width: 400px;
+      background: var(--surface);
+      border: 0.5px solid var(--border2);
+      border-radius: 16px;
+      padding: 1.1rem 1.4rem;
+      box-shadow: 0 1px 12px rgba(200,140,80,0.05);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.7s 0.38s ease both;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .progress-track {
+      height: 6px;
+      background: var(--accent3);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      border-radius: 99px;
+      transition: width 1s linear;
+    }
+
+    .msg {
+      font-size: 13.5px;
+      color: var(--muted);
+      text-align: center;
+      min-height: 22px;
+      transition: opacity 0.35s ease;
+      letter-spacing: 0.02em;
+      animation: fadeUp 0.7s 0.45s ease both;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.8rem;
+      animation: fadeUp 0.7s 0.52s ease both;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 99px;
+      border: 0.5px solid var(--border2);
+      background: var(--surface);
+      color: var(--muted);
+    }
+
+    .tag.accent {
+      background: var(--accent3);
+      color: var(--accent);
+      border-color: transparent;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10.5px;
+      color: rgba(160,128,96,0.35);
+      letter-spacing: 0.12em;
+      z-index: 1;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .arrived .dday-num { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <script>
+    const colors = ['#f2a0a0','#f0b882','#7aab7e','#e8925a','#f7dfc0'];
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.cssText = `
+        left:${Math.random()*100}%;
+        background:${colors[i%colors.length]};
+        width:${6+Math.random()*8}px;
+        height:${6+Math.random()*8}px;
+        animation-duration:${7+Math.random()*10}s;
+        animation-delay:${Math.random()*10}s;
+        border-radius:${Math.random()>.5?'50% 0 50% 0':'50%'};
+      `;
+      document.body.appendChild(p);
+    }
+  </script>
+
+  <div class="page" id="page">
+    <div class="eyebrow">✈ 여행 카운트다운</div>
+    <h1 class="heading">함께하는 <em>그날까지</em></h1>
+    <p class="date-sub" id="today-str"></p>
+
+    <div class="dday-card">
+      <div class="dday-wrap">
+        <span class="dday-label">D —</span>
+        <span class="dday-num" id="d-num">--</span>
+        <span class="dday-unit">일</span>
+      </div>
+      <div class="dday-hint">2026년 5월 15일까지</div>
+    </div>
+
+    <div class="blocks">
+      <div class="block">
+        <div class="block-num" id="c-h">--</div>
+        <div class="block-label">Hours</div>
+      </div>
+      <div class="colon">:</div>
+      <div class="block">
+        <div class="block-num" id="c-m">--</div>
+        <div class="block-label">Min</div>
+      </div>
+      <div class="colon">:</div>
+      <div class="block">
+        <div class="block-num" id="c-s">--</div>
+        <div class="block-label">Sec</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span>4월 25일</span>
+        <span id="pct-label">0%</span>
+        <span>5월 15일</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="pfill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <p class="msg" id="msg">설레는 마음으로 기다리고 있어요 🌸</p>
+
+    <div class="tags">
+      <span class="tag accent">✈ 여행</span>
+      <span class="tag">5월 15일</span>
+      <span class="tag">함께</span>
+      <span class="tag">🌷 설렘</span>
+    </div>
+  </div>
+
+  <footer>May 15, 2026</footer>
+
+  <script>
+    const TARGET = new Date('2026-05-15T00:00:00');
+    const START  = new Date('2026-04-25T00:00:00');
+    const MSGS = [
+      "설레는 마음으로 기다리고 있어요 🌸",
+      "같이 가는 거잖아, 빨리 와라 5월 15일 🌿",
+      "두근두근, 시간이 너무 느려요 ✈",
+      "조금만 더 기다리면 돼요 💛",
+      "기대하고 있어요, 함께할 그날을 🌷",
+    ];
+    let msgIdx = 0;
+    const msgEl = document.getElementById('msg');
+
+    setInterval(() => {
+      msgEl.style.opacity = 0;
+      setTimeout(() => {
+        msgIdx = (msgIdx + 1) % MSGS.length;
+        msgEl.textContent = MSGS[msgIdx];
+        msgEl.style.opacity = 1;
+      }, 350);
+    }, 4000);
+
+    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
+
+    function tick() {
+      const now  = new Date();
+      const diff = TARGET - now;
+
+      document.getElementById('today-str').textContent =
+        '오늘 ' + now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
+
+      if (diff <= 0) {
+        document.getElementById('d-num').textContent = '0';
+        ['c-h','c-m','c-s'].forEach(id => document.getElementById(id).textContent = '00');
+        document.getElementById('pfill').style.width = '100%';
+        document.getElementById('pct-label').textContent = '100%';
+        msgEl.textContent = '드디어 오늘이에요! 즐거운 여행 되세요 🎉';
+        document.getElementById('page').classList.add('arrived');
+        return;
+      }
+
+      const days = Math.floor(diff / 86400000);
+      const rem  = diff % 86400000;
+      document.getElementById('d-num').textContent = days;
+      document.getElementById('c-h').textContent = pad(rem / 3600000);
+      document.getElementById('c-m').textContent = pad((rem % 3600000) / 60000);
+      document.getElementById('c-s').textContent = pad((rem % 60000) / 1000);
+
+      const elapsed = Math.max(0, now - START);
+      const pct = Math.min(100, Math.round((elapsed / (TARGET - START)) * 100));
+      document.getElementById('pfill').style.width = pct + '%';
+      document.getElementById('pct-label').textContent = pct + '%';
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>
